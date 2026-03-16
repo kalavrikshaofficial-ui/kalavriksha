@@ -1,0 +1,38 @@
+[
+  {
+    "username": "ashish_sony",
+    "email": "ashishsony45@gmail.com",
+    "fullname": "Ashish S",
+    "password": "3b9d77051ec20e05bc73427aa4424516:d96f70872b5527f674f92e80f490da6f",
+    "role": "admin",
+    "dob": "1990-01-01",
+    "phone": "+918792625630"
+  },
+  {
+    "username": "anurag_sony",
+    "email": "anuragssony@gmail.com",
+    "fullname": "Anurag Sony",
+    "password": "vriksha2026",
+    "role": "admin",
+    "dob": "1990-01-01",
+    "phone": "+916363367179"
+  },
+  {
+    "username": "sp",
+    "email": "manojspyadav@gmail.com",
+    "fullname": "Manoj Sp",
+    "password": "reset_required",
+    "role": "user",
+    "dob": "2003-08-19",
+    "phone": "+919606502144"
+  },
+  {
+    "username": "suhasan01",
+    "email": "suhasan0110@gmail.com",
+    "fullname": "Suhas A N",
+    "password": "d3902972ec9b8b6613e51cc248ab8888:daa2767e1da2bbd17590a022f04d0ad1",
+    "role": "user",
+    "dob": "2003-10-01",
+    "phone": "+91 9019468960"
+  }
+]
