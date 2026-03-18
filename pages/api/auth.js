@@ -1,7 +1,7 @@
 import dbConnect from '../../lib/mongodb';
 import User from '../../models/User';
 import { setSession } from '../../lib/session';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
