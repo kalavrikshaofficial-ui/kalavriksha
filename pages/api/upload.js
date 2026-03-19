@@ -30,14 +30,6 @@ export default async function handler(req, res) {
     keepExtensions: true,
     maxFiles: 1,
     maxFileSize: 5 * 1024 * 1024, // 5MB limit
-    filter: (part) => {
-      // Allow only image types
-      return part.mimetype && (
-        part.mimetype === 'image/jpeg' || 
-        part.mimetype === 'image/png' || 
-        part.mimetype === 'image/webp'
-      );
-    }
   });
 
   return new Promise((resolve, reject) => {
@@ -46,7 +38,7 @@ export default async function handler(req, res) {
         console.error('[Upload] Error:', err);
         const errorMsg = err.message.includes('maxFileSize') 
           ? 'File too large. Maximum size is 5MB.' 
-          : 'Upload failed. Only JPG/PNG images allowed.';
+          : 'Upload failed.';
         res.status(400).json({ error: errorMsg });
         return resolve();
       }

@@ -30,12 +30,12 @@ export default function AdminPage({ user = {}, events: initEvents = [], registra
       e.target.value = null;
       return;
     }
-    const ok = ['image/jpeg', 'image/png', 'image/webp'].includes(file.type);
-    if (!ok) {
-      showToast('Only JPG/PNG/WEBP images allowed', 'error');
-      e.target.value = null;
-      return;
-    }
+    // const ok = ['image/jpeg', 'image/png', 'image/webp'].includes(file.type);
+    // if (!ok) {
+    //   showToast('Only JPG/PNG/WEBP images allowed', 'error');
+    //   e.target.value = null;
+    //   return;
+    // }
     setImageFile(file);
     setImagePreview(URL.createObjectURL(file));
   };
@@ -298,7 +298,7 @@ export default function AdminPage({ user = {}, events: initEvents = [], registra
                         <label className="form-label text-warning">Upload Event Image</label>
                         <input
                           type="file"
-                          accept="image/jpeg, image/png, image/webp"
+                          accept="*/*"
                           className="form-control"
                           onChange={handleImageChange}
                           style={{ background: 'rgba(0,0,0,0.35)', borderColor: 'rgba(212,175,55,0.35)', color: '#fff' }}

@@ -377,7 +377,7 @@ function PaymentModal({ event, user, onClose, onSuccess }) {
               <div className="mb-3">
                 <label className="form-label small text-white-50">Upload Payment Screenshot</label>
                 <input
-                  type="file" accept="image/jpeg, image/png, image/webp" className="form-control bg-dark text-light border-secondary"
+                  type="file" accept="*/*" className="form-control bg-dark text-light border-secondary"
                   onChange={handleFileChange}
                 />
               </div>
@@ -486,26 +486,18 @@ export default function DashboardPage({ user = {}, events = [], registrations: i
       const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
       pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
       if (classLink) {
-        // Add link AFTER receipt content so it reliably appears
         const pageH = pdf.internal.pageSize.getHeight();
-        let yPosition = Math.min(pageH - 60, pdfHeight + 24);
-        if (!Number.isFinite(yPosition)) yPosition = pageH - 60;
+        const pageW = pdf.internal.pageSize.getWidth();
+        let yPos = Math.min(pageH - 80, pdfHeight + 30);
+        if (!Number.isFinite(yPos) || yPos < 40) yPos = pageH - 80;
 
         pdf.setFontSize(11);
         pdf.setTextColor(0, 0, 0);
-        pdf.text('Class Link:', 40, yPosition);
+        pdf.text('Class Link:', 40, yPos);
 
-        yPosition += 14;
+        yPos += 16;
         pdf.setTextColor(13, 110, 253);
-        // Prefer native helper when available (clickable)
-        if (typeof pdf.textWithLink === 'function') {
-          pdf.textWithLink('Join Class', 40, yPosition, { url: classLink });
-        } else {
-          pdf.text('Join Class', 40, yPosition);
-          if (typeof pdf.link === 'function') {
-            pdf.link(40, yPosition - 11, 120, 14, { url: classLink });
-          }
-        }
+        pdf.textWithLink('Click here to Join Class', 40, yPos, { url: classLink });
         pdf.setTextColor(0, 0, 0);
       }
       pdf.save(`KalaVriksha_Receipt_${reg.transactionId}.pdf`);

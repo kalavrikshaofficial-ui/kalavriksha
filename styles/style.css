@@ -1579,9 +1579,6 @@ h1, h2, h3 {
     .dashboard-sidebar {
         width: 80px;
     }
-    .sidebar-logo span, .nav-link-item span, .logout-btn span {
-        display: none;
-    }
     .dashboard-main {
         margin-left: 80px;
         max-width: calc(100% - 80px);
