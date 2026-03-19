@@ -1,70 +1,36 @@
+import { v2 as cloudinary } from 'cloudinary';
 import formidable from 'formidable';
-import fs from 'fs';
-import path from 'path';
-import { getSession } from '../../lib/session';
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
+export const config = { api: { bodyParser: false } };
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
+  if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-  // Security: Check if user is logged in
-  const session = getSession(req);
-  if (!session) {
-    return res.status(401).json({ error: 'Unauthorized: Please login to upload proof.' });
-  }
+  const form = formidable({ maxFileSize: 10 * 1024 * 1024 });
 
-  const uploadDir = path.join(process.cwd(), 'public', 'uploads');
-  if (!fs.existsSync(uploadDir)) {
-    fs.mkdirSync(uploadDir, { recursive: true });
-  }
+  form.parse(req, async (err, fields, files) => {
+    if (err) return res.status(500).json({ error: 'File parse error' });
 
-  const form = formidable({
-    uploadDir,
-    keepExtensions: true,
-    maxFiles: 1,
-    maxFileSize: 5 * 1024 * 1024, // 5MB limit
-  });
+    const fileArray = files.file;
+    const file = Array.isArray(fileArray) ? fileArray[0] : fileArray;
 
-  return new Promise((resolve, reject) => {
-    form.parse(req, (err, fields, files) => {
-      if (err) {
-        console.error('[Upload] Error:', err);
-        const errorMsg = err.message.includes('maxFileSize') 
-          ? 'File too large. Maximum size is 5MB.' 
-          : 'Upload failed.';
-        res.status(400).json({ error: errorMsg });
-        return resolve();
-      }
+    if (!file) return res.status(400).json({ error: 'No file uploaded' });
 
-      const file = Array.isArray(files.file) ? files.file[0] : files.file;
-      if (!file) {
-        res.status(400).json({ error: 'No valid image file detected' });
-        return resolve();
-      }
-
-      // Security: Sanitize filename to prevent path traversal or weird characters
-      const oldPath = file.filepath;
-      const rawName = file.originalFilename || 'upload';
-      const cleanName = `${Date.now()}-${rawName.replace(/[^a-zA-Z0-9.]/g, '_')}`;
-      const newPath = path.join(uploadDir, cleanName);
-      
-      try {
-        fs.renameSync(oldPath, newPath);
-        const url = `/uploads/${cleanName}`;
-        res.status(200).json({ success: true, url });
-        resolve();
-      } catch (renameErr) {
-        console.error('[Upload] Rename error:', renameErr);
-        res.status(500).json({ error: 'Failed to process file' });
-        resolve();
-      }
-    });
+    try {
+      const result = await cloudinary.uploader.upload(file.filepath, {
+        folder: 'kala-vriksha',
+        resource_type: 'auto',
+      });
+      return res.status(200).json({ url: result.secure_url });
+    } catch (uploadErr) {
+      console.error('Cloudinary error:', uploadErr);
+      return res.status(500).json({ error: 'Upload failed' });
+    }
   });
 }
