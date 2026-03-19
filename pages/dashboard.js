@@ -230,12 +230,19 @@ function PaymentModal({ event, user, onClose, onSuccess }) {
     setSubmitting(true);
     try {
       // 1. Upload proof
-      const formData = new FormData();
-      formData.append('file', screenshotFile);
-      
+      const toBase64 = (file) => new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = reject;
+      });
+
+      const base64File = await toBase64(screenshotFile);
+
       const uploadRes = await fetch('/api/upload', {
         method: 'POST',
-        body: formData,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ file: base64File }),
       });
       if (!uploadRes.ok) {
         const errData = await uploadRes.json();
