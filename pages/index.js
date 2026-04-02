@@ -210,6 +210,9 @@ export default function HomePage({ events = [], user = null }) {
     <>
       <Head>
         <title>Kala Vriksha | Mystical Wisdom</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet" />
       </Head>
       <ParticleBackground />
 
@@ -242,19 +245,28 @@ export default function HomePage({ events = [], user = null }) {
       {/* ── Home ──────────────────────────────────────────────── */}
       <section id="home" className="mystical-section">
         <div className="container hero-content">
-          <h1 className="reveal">
+          <h1 className="reveal" style={{ fontFamily: 'Cinzel, serif', fontWeight: '700' }}>
             The <span className="gold-gradient-text">Kala Vriksha</span>
           </h1>
-          <p className="reveal">
-            Kala Vriksha is a platform dedicated to holistic human development, where financial intelligence and inner transformation come together. Our programs are designed to help individuals grow financially, mentally, and spiritually, creating a balanced and meaningful life.
+          <h2 className="reveal" style={{ fontFamily: 'Lato, sans-serif', fontSize: '1.5rem', fontWeight: '400', marginBottom: '1rem' }}>
+            A journey of growth, balance, and transformation.
+          </h2>
+          <p className="reveal" style={{ fontFamily: 'Lato, sans-serif' }}>
+            Kala Vriksha is a sacred space for holistic human development — where financial intelligence meets inner awakening. We empower individuals to evolve not just in wealth, but in mind, purpose, and spirit. Through our carefully designed programs, we guide you towards financial clarity and smart wealth creation, mental strength and emotional balance, and spiritual growth with inner peace. Here, transformation is not just a goal — it is a way of life.
+          </p>
+          <p className="reveal" style={{ fontFamily: 'Lato, sans-serif', fontSize: '1.1rem', fontStyle: 'italic', marginBottom: '1.5rem' }}>
+            Build wealth. Discover purpose. Live consciously.
           </p>
           <a
             href="#stats"
             className="btn btn-glow reveal mt-3"
             onClick={e => { e.preventDefault(); scrollTo('stats'); }}
           >
-            Explore Now
+            Begin Your Journey
           </a>
+          <p className="reveal" style={{ fontFamily: 'Lato, sans-serif', fontSize: '0.9rem', marginTop: '1rem', opacity: '0.8' }}>
+            Limited seats. Exclusive immersive experience.
+          </p>
         </div>
       </section>
 
