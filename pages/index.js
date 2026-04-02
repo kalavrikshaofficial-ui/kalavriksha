@@ -123,6 +123,27 @@ export default function HomePage({ events = [], user = null }) {
     }
   }, [status, msg]);
 
+  // Initialize Bootstrap accordion after component mounts
+  useEffect(() => {
+    // Wait for Bootstrap to load, then initialize accordion
+    const initBootstrapAccordion = () => {
+      if (typeof window !== 'undefined' && window.bootstrap) {
+        const accordionElements = document.querySelectorAll('[data-bs-toggle="collapse"]');
+        accordionElements.forEach(element => {
+          new window.bootstrap.Collapse(element, {
+            toggle: false
+          });
+        });
+      }
+    };
+
+    // Try immediately, then fallback to delay
+    initBootstrapAccordion();
+    const fallbackTimer = setTimeout(initBootstrapAccordion, 1000);
+    
+    return () => clearTimeout(fallbackTimer);
+  }, []);
+
   useEffect(() => {
     const onScroll = () => setShowBackTop(window.scrollY > 300);
     window.addEventListener('scroll', onScroll);

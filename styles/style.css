@@ -245,6 +245,18 @@ h6 {
     color: var(--gold-secondary) !important;
 }
 
+.accordion-collapse.collapse,
+.accordion-body {
+    color: white !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.accordion-collapse.collapsing {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
 .accordion-button::after {
     filter: invert(1);
 }
