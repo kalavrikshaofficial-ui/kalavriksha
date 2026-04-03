@@ -96,7 +96,11 @@ export default function LoginPage() {
 
   return (
     <>
-      <Head><title>Login | Kala Vriksha Mystical Wisdom</title></Head>
+      <Head>
+        <title>Login | Kala Vriksha</title>
+        <meta name="description" content="Login to Kala Vriksha - your sacred space for holistic growth and transformation." />
+        <meta name="robots" content="noindex" />
+      </Head>
       <ParticleBackground />
 
       {/* Back home link */}

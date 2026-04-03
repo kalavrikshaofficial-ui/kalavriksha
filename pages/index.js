@@ -209,7 +209,26 @@ export default function HomePage({ events = [], user = null }) {
   return (
     <>
       <Head>
-        <title>Kala Vriksha | Mystical Wisdom</title>
+        <title>Kala Vriksha | Holistic Growth – Financial, Mental & Spiritual Development</title>
+        <meta name="description" content="Kala Vriksha is a sacred space for holistic human development — where financial intelligence meets inner awakening. Join our programs for financial clarity, mental strength, and spiritual growth." />
+        <meta name="keywords" content="Kala Vriksha, holistic development, spiritual growth, financial intelligence, mental strength, inner awakening, wealth creation, mindfulness, transformation" />
+        <meta name="author" content="Kala Vriksha" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://kalavriksha.com" />
+
+        {/* Open Graph (WhatsApp, Facebook previews) */}
+        <meta property="og:title" content="Kala Vriksha | Holistic Growth – Financial, Mental & Spiritual Development" />
+        <meta property="og:description" content="Join Kala Vriksha — a platform for holistic human development. Grow financially, mentally, and spiritually." />
+        <meta property="og:url" content="https://kalavriksha.com" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://kalavriksha.com/og-image.jpg" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Kala Vriksha | Holistic Growth" />
+        <meta name="twitter:description" content="A sacred space for financial intelligence, mental strength, and spiritual growth." />
+        <meta name="twitter:image" content="https://kalavriksha.com/og-image.jpg" />
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
         <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet" />

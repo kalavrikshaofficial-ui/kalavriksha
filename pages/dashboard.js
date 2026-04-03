@@ -524,7 +524,11 @@ export default function DashboardPage({ user = {}, events = [], registrations: i
 
   return (
     <>
-      <Head><title>Dashboard | Kala Vriksha</title></Head>
+      <Head>
+        <title>Dashboard | Kala Vriksha</title>
+        <meta name="description" content="Kala Vriksha Dashboard - manage your registrations, events, and personal growth journey." />
+        <meta name="robots" content="noindex" />
+      </Head>
       <ParticleBackground />
 
 

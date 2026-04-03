@@ -168,7 +168,11 @@ export default function AdminPage({ user = {}, events: initEvents = [], registra
 
   return (
     <>
-      <Head><title>High Priest&apos;s Sanctum | Admin | Kala Vriksha</title></Head>
+      <Head>
+        <title>Admin | Kala Vriksha</title>
+        <meta name="description" content="Kala Vriksha Admin Dashboard - manage events, registrations, and sacred community." />
+        <meta name="robots" content="noindex" />
+      </Head>
       <ParticleBackground />
 
       <div style={{ display: 'flex', minHeight: '100vh' }}>
