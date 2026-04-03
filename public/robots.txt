@@ -4,6 +4,3 @@ Allow: /
 
 # Host
 Host: https://kalavriksha.in
-
-# Sitemaps
-Sitemap: https://kalavriksha.in/sitemap.xml
