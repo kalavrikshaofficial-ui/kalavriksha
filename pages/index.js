@@ -356,14 +356,26 @@ export default function HomePage({ events = [], user = null }) {
             <div className="carousel-inner">
               <div className="carousel-item active">
                 <div className="testimonial-card">
-                  <p>&ldquo;The wisdom of Kala Vriksha transformed my life. I finally found the clarity I was seeking for years.&rdquo;</p>
-                  <h4>- Aria Thorne</h4>
+                  <p>&ldquo;I came here searching for answers... I left with clarity, confidence, and peace.&rdquo;</p>
+                  <h4>- Arjun Mehta</h4>
                 </div>
               </div>
               <div className="carousel-item">
                 <div className="testimonial-card">
-                  <p>&ldquo;A truly mystical experience. The sacred pillars provide a roadmap to real inner peace.&rdquo;</p>
-                  <h4>- Julian Vane</h4>
+                  <p>&ldquo;Kala Vriksha didn't just teach me... it transformed the way I think, live, and grow.&rdquo;</p>
+                  <h4>- Ananya Sharma</h4>
+                </div>
+              </div>
+              <div className="carousel-item">
+                <div className="testimonial-card">
+                  <p>&ldquo;I learned how to manage money... but more importantly, I learned how to manage my mindset.&rdquo;</p>
+                  <h4>- Rohit Iyer</h4>
+                </div>
+              </div>
+              <div className="carousel-item">
+                <div className="testimonial-card">
+                  <p>&ldquo;This is not just a program... it's a journey towards a better, stronger, and happier you.&rdquo;</p>
+                  <h4>- Sneha Reddy</h4>
                 </div>
               </div>
             </div>
