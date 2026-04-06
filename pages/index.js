@@ -173,7 +173,7 @@ export default function HomePage({ events = [], user = null }) {
     {
       img: '/anurag_new.jpg', name: 'Anurag Sony',
       role: 'Co-Founder & Spiritual Lead',
-      bio: 'With over a decade of experience in mindfulness and psychological counseling, Anurag ensures that every aspect of Kala Vriksha is rooted in empathy, peace, and sacred balance.',
+      bio: 'With years of experience in mindfulness and psychological counseling, Anurag ensures that every aspect of Kala Vriksha is rooted in empathy, peace, and sacred balance.',
       email: 'anuragssony@gmail.com', phone: '+91 6363367179',
     },
   ];
